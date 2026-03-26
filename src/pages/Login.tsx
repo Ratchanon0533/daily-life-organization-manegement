@@ -35,7 +35,7 @@ const Login = () => {
       mode2 === "unversity" ? "UNIVERSITY" : "ORGANIZER";
 
     try {
-      const res = await fetch("http://localhost:5000/reg/organizers", {
+      const res = await fetch("https://api.dailylifes.online/reg/organizers", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -64,7 +64,7 @@ const Login = () => {
   // ================= LOGIN =================
   const handleLogin = async () => {
     try {
-      const res = await fetch("http://localhost:5000/login/organizers", {
+      const res = await fetch("https://api.dailylifes.online/login/organizers", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

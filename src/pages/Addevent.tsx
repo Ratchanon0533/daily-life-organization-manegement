@@ -9,7 +9,7 @@ interface EventFormData {
     location: string;
     open_date: string;
     close_date: string;
-    status: 'เปิดรับ' | 'ใกล้เต็ม';
+    status: 'open' | 'almost_full';
     image: File | null;
     contact1: string;
     contact2: string;
@@ -23,7 +23,7 @@ export default function AddEvent() {
 
     console.log(user.organizer_id);
     console.log(user.organizer_name);
-    
+
 
     const [formData, setFormData] = useState<EventFormData>({
         organizer_id: user.organizer_id || '',
@@ -33,7 +33,7 @@ export default function AddEvent() {
         location: '',
         open_date: '',
         close_date: '',
-        status: 'เปิดรับ',
+        status: 'open',
         image: null,
         contact1: '',
         contact2: '',
@@ -59,7 +59,7 @@ export default function AddEvent() {
             const uploadFormData = new FormData();
             uploadFormData.append('image', file);
 
-            const response = await fetch('http://localhost:5000/s3/upload', {
+            const response = await fetch('https://api.dailylifes.online/upload/event-image', {
                 method: 'POST',
                 headers: {
                     ...(token ? { Authorization: `Bearer ${token}` } : {})
@@ -108,7 +108,7 @@ export default function AddEvent() {
                 status: formData.status,
             };
 
-            const response = await fetch('http://localhost:5000/post/event', {
+            const response = await fetch('https://api.dailylifes.online/post/event', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -131,7 +131,7 @@ export default function AddEvent() {
                 location: '',
                 open_date: '',
                 close_date: '',
-                status: 'เปิดรับ',
+                status: 'open',
                 image: null,
                 contact1: '',
                 contact2: '',

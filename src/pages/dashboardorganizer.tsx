@@ -57,7 +57,7 @@ export default function DashboardOrganizer() {
 
     const fetchEvents = async (orgId: number, authToken: string) => {
         try {
-            const response = await fetch(`http://localhost:5000/getall/event/${orgId}`, {
+            const response = await fetch(`https://api.dailylifes.online/getall/event/${orgId}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
