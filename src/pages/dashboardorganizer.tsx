@@ -32,6 +32,9 @@ export default function DashboardOrganizer() {
             return;
         }
         try {
+            if (!token && !organizerId){
+                console.log("ERROR")
+            }
             const parsed = JSON.parse(raw);
             let userPart: any = parsed;
             let tok: string | null = null;
